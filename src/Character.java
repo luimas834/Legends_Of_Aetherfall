@@ -5,9 +5,25 @@ public class Character {
     int standardAtkDmg;
     int standardAtkPow;
     
-    public Character(int health,int power,int standaradAtkDmg,int standardAtkPow){
+    public Character(int health,int power,int standardAtkDmg,int standardAtkPow){
 
     }
+
+     public void takeDamage(int damage){
+        this.health-=damage;
+    }
+    public void takeSpecialDamage(int speicalDamage){
+        this.health-=speicalDamage;
+    }
+    public void isAlive(){
+        if(this.health>0){
+            System.out.println("Character is alive!!");
+        }
+        else{
+            System.out.println("Character is dead!!>_<");
+        }
+    }
+
 
     public void setName(String name){
         this.name=name;
