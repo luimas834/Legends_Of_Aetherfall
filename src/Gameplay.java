@@ -85,13 +85,94 @@ public class Gameplay {
     }
     
     public void heroTurn(){
+        System.out.print("= ");
+        String action =scanner.nextLine().toLowerCase().trim();
 
+        if(action.equals("attack")){
+            if(player.getPower()>=player.getStandardAtkPow()){
+                player.normalAtk(enemy);
+            }
+            else{
+                System.out.println("Not enough power to attack!");
+                return;
+            }
+        }
+        else if(action.equals("speical")){
+            if(player.getPower()>=player.specialCost){
+                heroSpeicalAttack();
+            }
+            else{
+                System.out.println("Not enough power for special attack! >_<");
+                return;
+            }
+        }
+        else{
+            System.out.println("Invalid command! -_- Use 'attack' or 'speical'");
+            return;
+        }
+
+        displayGameStats();
+
+        if(enemy.getHealth()<=0){
+            System.out.println("-------- Resutls --------");
+            System.out.println(player.getName()+" wins the battle! ^_^");
+            System.out.println(enemy.getName()+" the "+enemy.getVillainType().toLowerCase()+" has been defeated");
+            isPlaying=false;
+        }
     }
 
     public void enemyTurn(){
+        Random random =new Random();
+        boolean randomValue= random.nextBoolean();
+        //found this way of getting randomly a boolean value with 50% chance interesting :3
+
+        if(randomValue&&enemy.getPower()>=enemy.specialCost){
+            enemySpeicalAttack();
+        }
+        else if(enemy.getPower()>=enemy.getStandardAtkPow()){
+            enemy.normalAtk(player);
+        }
+        else{
+            System.out.println(enemy.getName()+" doesn't have enough power to attack! ");
+            return;
+        }
+        displayGameStats();
+        if(player.getHealth()<=0){
+            System.out.println("-------- Results ---------");
+            System.out.println(enemy.getName()+" wins the battle!");
+            System.out.println(player.getName()+" the "+player.getHeroType().toLowerCase()+" has been defeated!");
+            isPlaying=false;
+        }
 
     }
-    public void displayGameStat(){
+
+    public void heroSpeicalAttack(){
+        String heroType=player.getHeroType();
+
+        if(heroType.equals("Mage")){
+            player.castSpell(enemy);
+        }
+        else if(heroType.equals("Archer")){
+            player.quickShot(enemy);
+        }
+        else if(heroType.equals("Warrior")){
+            player.mightyStrike(enemy);
+        }
+    }
+    public void enemySpeicalAttack(){
+        String villainType=enemy.getVillainType();
+
+        if(villainType.equals("Dark Overlord")){
+            enemy.summonDarkness(player);
+        }
+        else if(villainType.equals("Regional Warlord")){
+            enemy.toxicAura(player);
+        }
+        else if(villainType.equals("Corrupted Mortal")){
+            enemy.curse(player);
+        }
+    }
+    public void displayGameStats(){
         System.out.println("-------- Game Stats --------");
         System.out.println(player.getName()+" - Health: "+player.getHealth()+", Power: "+player.getPower());
         System.out.println(enemy.getName()+" - Health: "+enemy.getHealth()+", Power: "+enemy.getPower());
