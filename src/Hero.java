@@ -32,7 +32,7 @@ public class Hero extends Character {
             this.power-=specialCost;
             target.takeSpecialDamage(specialDmg);
             System.out.println(this.name+" used speical on "+target.getName());
-            System.out.println(this.name+" caused "+specialDmg+"damage.");
+            System.out.println(this.name+" caused "+specialDmg+" damage.");
         }
     }
 
@@ -42,7 +42,7 @@ public class Hero extends Character {
             this.power-=specialCost;
             target.takeSpecialDamage(specialDmg);
             System.out.println(this.name+" used speical on "+target.getName());
-            System.out.println(this.name+" caused "+specialDmg+"damage.");
+            System.out.println(this.name+" caused "+specialDmg+" damage.");
         }
     }
 
@@ -52,7 +52,7 @@ public class Hero extends Character {
             this.power-=specialCost;
             target.takeSpecialDamage(specialDmg);
             System.out.println(this.name+" used speical on "+target.getName());
-            System.out.println(this.name+" caused "+specialDmg+"damage.");
+            System.out.println(this.name+" caused "+specialDmg+" damage.");
         }
     }
     
