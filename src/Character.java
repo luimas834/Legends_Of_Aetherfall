@@ -6,14 +6,17 @@ public class Character {
     int standardAtkPow;
     
     public Character(int health,int power,int standardAtkDmg,int standardAtkPow){
-
+        this.health = health;
+        this.power = power;
+        this.standardAtkDmg = standardAtkDmg;
+        this.standardAtkPow = standardAtkPow;
     }
 
      public void takeDamage(int damage){
         this.health-=damage;
     }
-    public void takeSpecialDamage(int speicalDamage){
-        this.health-=speicalDamage;
+    public void takeSpecialDamage(int specialDamage){
+        this.health-=specialDamage;
     }
     public void isAlive(){
         if(this.health>0){
